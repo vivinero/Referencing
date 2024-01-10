@@ -1,4 +1,5 @@
 const blogModel = require("../models/blogModel")
+const commentModel = require("../models/commentModel")
 
 exports.createPost = async (req, res)=> {
     try {
@@ -91,8 +92,9 @@ exports.deleteBlog = async (req, res)=> {
                 message: "unable to delete user"
             })
         }
+        await commentModel.deleteMany({post: id})
         return res.status(200).json({
-            message: `This blog ${blog.title} has been deleted successfully`
+            message: `This blog ${blog.title} has been deleted successfu
         })
     } catch (error) {
         res.status(500).json({
