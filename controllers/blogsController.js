@@ -94,7 +94,8 @@ exports.deleteBlog = async (req, res)=> {
         }
         await commentModel.deleteMany({post: id})
         return res.status(200).json({
-            message: `This blog ${blog.title} has been deleted successfu
+            message: `This blog ${blog.title} has been deleted successfully`
+            
         })
     } catch (error) {
         res.status(500).json({
